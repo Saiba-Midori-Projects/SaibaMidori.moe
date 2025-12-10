@@ -9,9 +9,6 @@
     <!-- 预加载 -->
     <link rel="preload" href="./assets/images/Midori_home_Dummy.png" as="image">
 
-    <!-- 重定向 -->
-    <!-- <meta http-equiv="refresh" content="0; URL='https://gytxtx.github.io/'" /> -->
-
     <!-- 网站图标 -->
     <!-- <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"> -->
     <link rel="icon" href="https://avatars.githubusercontent.com/u/62281844?v=4" />
@@ -111,6 +108,10 @@
             margin: 0;
         }
 
+        li {
+            color: #555;
+        }
+
         small {
             /* 特殊排版效果 */
             display: flex;
@@ -178,6 +179,10 @@
             footer {
                 color: #a0a0a0;
             }
+
+            li {
+                color: #c0c0c0;
+            }
         }
     </style>
 
@@ -189,20 +194,13 @@
 
         <div class="card">
 
-            <h2>重定向页面</h2>
+            <h2>Project for 才羽 ミドリ</h2>
 
-            <p>没错，这是个重定向页面，其目的是将你跳转到另一个页面中。</p>
+            <p>以下是可用的项目：</p>
 
-            <p id="countdown-message">将在 <span id="totalSecond">10</span> 秒后进行跳转。</p>
-
-            <p id="status-message">如果未跳转，请点击 <a href="https://gytxtx.github.io/" target="_blank"
-                    rel="noopener noreferrer"><strong>这里</strong></a>。</p>
-
-            <hr />
-
-            <p>额，好吧。实话说，我想不出来这个页面应该放什么，所以就用重定向页面替代了（</p>
-
-            <p>或者，你有什么好的建议，也可以通过下面的电子邮件链接反馈给我，我将不胜感激。</p>
+            <ul>
+                <li><a href="https://clicker.saibamidori.moe/">小绿点击器</a></li>
+            </ul>
 
             <hr />
 
@@ -222,95 +220,6 @@
 
     </div>
 
-    <!-- <script language="javascript" type="text/javascript">
-        var second = parseInt(document.getElementById('totalSecond').textContent);
-
-        // 保存计时器 ID，以便清除 -> `var countdown = `
-        var countdown = setInterval(function () {
-            if (second <= 0) {
-                clearInterval(countdown);  // 停止倒计时
-
-                // 重定向方法
-                location.href = 'https://gytxtx.github.io/';
-
-                setTimeout(() => {
-                    document.getElementById('endTips').textContent = "额，似乎还没有跳转... 你可以点击下面的链接试试...?";
-
-                    // 插入 HTML
-                    document.getElementById('jumpLink').innerHTML =
-                        '<a href="https://gytxtx.github.io/" target="_blank" rel="noopener noreferrer"><strong>点击这里</strong></a>';
-
-                }, 1.5 * 1000);
-
-            } else {
-                document.getElementById('totalSecond').textContent = --second;
-            }
-        }, 1000);
-    </script> -->
-
-    <script language="javascript" type="text/javascript">
-        const countdownMessage = document.getElementById('countdown-message');
-        const timerElement = document.getElementById('totalSecond');
-        const statusMessage = document.getElementById('status-message');
-
-        let seconds = parseInt(timerElement.textContent, 10); // 明确进制
-        let countdown;
-
-        function initCountdown() {
-            // const countdown = setInterval(() => {
-
-            countdown = setInterval(() => {
-                if (seconds <= 0) {
-                    clearInterval(countdown);
-                    redirectWithFallback();
-                } else {
-                    seconds--;
-                    timerElement.textContent = seconds;
-                }
-
-            }, 1000);
-        }
-
-        function redirectWithFallback() {
-            // 尝试自动跳转
-            location.href = 'https://gytxtx.github.io/';
-
-            // 备用方案
-            setTimeout(() => {
-                if (!document.hidden || !document.hasFocus()) { // 检测是否仍在当前页
-                    showFallbackMessage();
-                }
-            }, 1.5 * 1000);
-        }
-
-        function showFallbackMessage() {
-            countdownMessage.textContent = '跳转似乎遇到了问题，请点击下方的链接手动访问。';
-            statusMessage.innerHTML = '<a href="https://gytxtx.github.io/" target="_blank" rel="noopener noreferrer"><strong>点击这里</strong></a>';
-
-        }
-
-        // 处理页面可见性变化
-        document.addEventListener('visibilitychange', function () {
-            if (document.hidden) {
-                clearInterval(countdown);
-            } else {
-                // 重新计算剩余时间
-                const remaining = seconds;
-                seconds = remaining;
-                if (seconds > 0) {
-                    initCountdown();
-                }
-
-                if (seconds <= 0) {
-                    clearInterval(countdown);
-                    redirectWithFallback();
-                }
-            }
-        });
-
-        // 启动倒计时
-        initCountdown();
-    </script>
 </body>
 
 </html>
