@@ -3,6 +3,8 @@ languageCode = 'zh-CN'
 title = 'Project for Saiba Midori'
 theme = 'midori'
 
+disableKinds = ["categories", "taxonomy", "term", "RSS"]
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
