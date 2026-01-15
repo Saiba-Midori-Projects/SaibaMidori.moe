@@ -1,4 +1,5 @@
-name = "saibamidori"
+name = 'saibamidori'
+
 compatibility_date = "2025-07-31"
 
 [build]
