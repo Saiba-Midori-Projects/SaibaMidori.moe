@@ -1,0 +1,8 @@
+baseURL = 'https://saibamidori.moe/'
+languageCode = 'zh-CN'
+title = 'Project for Saiba Midori'
+theme = 'midori'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

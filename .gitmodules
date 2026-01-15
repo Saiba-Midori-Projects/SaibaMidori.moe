@@ -1,0 +1,3 @@
+[submodule "themes/midori"]
+	path = themes/midori
+	url = https://github.com/Saiba-Midori-Projects/gohugo-theme-midori.git
