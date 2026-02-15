@@ -8,3 +8,10 @@ disableKinds = ["categories", "taxonomy", "term", "RSS"]
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # 设置为 true 以允许在 Markdown 文件中直接写 HTML 标签
+      unsafe = true
+      
