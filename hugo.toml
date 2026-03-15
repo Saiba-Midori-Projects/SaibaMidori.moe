@@ -30,3 +30,6 @@ disableKinds = ["taxonomy", "term"]
   [markup.tableOfContents]
     startLevel = 1
     endLevel = 3
+
+[params]
+  backgroundImage = 'https://static.saibamidori.moe/img/29131.png'
