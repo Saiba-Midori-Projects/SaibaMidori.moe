@@ -28,8 +28,8 @@ disableKinds = ["taxonomy", "term"]
       # 设置为 true 以允许在 Markdown 文件中直接写 HTML 标签
       unsafe = true
   [markup.tableOfContents]
-    startLevel = 1
-    endLevel = 3
+    startLevel = 2
+    endLevel = 4
 
 [params]
   backgroundImage = 'https://static.saibamidori.moe/img/29131.png'
