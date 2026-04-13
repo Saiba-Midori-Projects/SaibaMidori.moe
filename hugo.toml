@@ -32,7 +32,7 @@ disableKinds = ["taxonomy", "term"]
     endLevel = 4
 
 [params]
-  backgroundImage = 'https://static.saibamidori.moe/img/29131.png'
+  backgroundImage = 'images/background.png'
 
   footerHTML = """
   <p>Copyright &copy; 2026 <a href="https://github.com/gytxtx">KFACBT</a>. All rights reserved.</p>

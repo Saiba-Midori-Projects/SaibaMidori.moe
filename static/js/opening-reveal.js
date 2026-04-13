@@ -7,7 +7,7 @@ const componentCSS = `
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: var(--opening-overlay, #fff);
+    background: var(--opening-overlay, var(--bg-color, #fff));
     clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
     animation: overlayClose 0.6s var(--opening-ease-main, cubic-bezier(0.73, 0.02, 0.24, 0.99)) 1.2s forwards;
     pointer-events: none;
@@ -41,7 +41,7 @@ const componentCSS = `
 
   .title-base {
     position: relative;
-    color: var(--opening-fg, #111);
+    color: var(--opening-fg var(--text-main, #111));
     opacity: 0;
     animation: baseFade 0.12s linear 0.08s forwards;
   }
@@ -50,8 +50,8 @@ const componentCSS = `
     position: absolute;
     top: 0;
     left: 0;
-    color: var(--opening-mask-fg, #fff);
-    background: var(--opening-mask-bg, #1f1f1f);
+    color: var(--opening-mask-fg, var(--bg-color, #fff));
+    background: var(--opening-mask-bg, var(--primary-color, #44c96a));
     clip-path: polygon(0 0,0 0,0 100%,0 100%);
     animation:
       maskSweep 0.32s var(--opening-ease-fast, cubic-bezier(0.65, 0, 0.35, 1)) 0.35s forwards,
@@ -63,7 +63,7 @@ const componentCSS = `
     position: absolute;
     top: 0;
     left: 0;
-    color: var(--opening-fg, #111);
+    color: var(--opening-fg, var(--text-main, #111));
     clip-path: polygon(0 0,0 0,0 100%,0 100%);
     animation: finalReveal 0.52s var(--opening-ease-text, cubic-bezier(0.76, -0.02, 0.2, 0.98)) 0.55s forwards;
   }
