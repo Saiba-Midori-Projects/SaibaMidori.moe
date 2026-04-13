@@ -41,7 +41,7 @@ const componentCSS = `
 
   .title-base {
     position: relative;
-    color: var(--opening-fg var(--text-main, #111));
+    color: var(--opening-fg, var(--text-main, #111));
     opacity: 0;
     animation: baseFade 0.12s linear 0.08s forwards;
   }
@@ -104,6 +104,35 @@ const componentCSS = `
   @keyframes baseFade {
     to {
       opacity: 1;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .title-base,
+    .title-mask,
+    .title-final {
+      font-size: clamp(36px, 7vw, 72px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .opening-center {
+      width: min(84vw, 320px);
+    }
+
+    .title-box {
+      display: block;
+      width: 100%;
+    }
+
+    .title-base,
+    .title-mask,
+    .title-final {
+      font-size: clamp(30px, 9vw, 42px);
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      text-align: center;
     }
   }
 `;
