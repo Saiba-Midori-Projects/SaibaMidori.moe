@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+{{ $bg := .Site.Params.backgroundImage | default "images/default_bg.png" }}
+<body
+    style="--bg-img: url('{{ $bg | relURL }}');"
+    data-theme-name="{{ .Site.Params.themeName | default "Midori" }}"
+    data-theme-version="{{ .Site.Params.version | default "0.1.0" }}"
+    data-hugo-version="{{ hugo.Version }}"
+>
+    {{ $openingTitle := cond .IsHome .Site.Title .Title }}
+    <opening-reveal title-text="{{ $openingTitle }}"></opening-reveal>
+    {{ $hasMainMenu := false }}
+    {{ with site.Menus.main }}
+    {{ $hasMainMenu = gt (len .) 0 }}
+    {{ end }}
+    {{ $toc := .TableOfContents }}
+    {{ $tocEnabled := ne .Params.toc false }}
+    {{ $hasToc := and $tocEnabled (in $toc "<a href=\"#") }}
+    <div class="mobile-appbar" role="banner">
+        <div class="mobile-appbar__inner">
+            {{ if $hasMainMenu }}
+            <button
+                class="site-nav-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="site-sidebar"
+                aria-label="{{ T "nav.openMenu" }}"
+                data-label-open="{{ T "nav.openMenu" }}"
+                data-label-close="{{ T "nav.closeMenu" }}"
+            >
+                <span class="material-icons" aria-hidden="true">menu</span>
+            </button>
+            {{ end }}
+            <div class="mobile-appbar__text">
+                <a class="mobile-appbar__title" href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+                <span class="mobile-appbar__page">
+                    {{ if .IsHome }}
+                    {{ T "common.home" }}
+                    {{ else }}
+                    {{ .Title }}
+                    {{ end }}
+                </span>
+            </div>
+            <div class="mobile-appbar__actions">
+                {{ partial "language-switcher.html" . }}
+            {{ if $hasToc }}
+            <button
+                class="mobile-toc-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="post-toc-nav"
+                aria-label="{{ T "toc.open" }}"
+                data-label-open="{{ T "toc.open" }}"
+                data-label-close="{{ T "toc.close" }}"
+            >
+                <span class="material-icons" aria-hidden="true">toc</span>
+            </button>
+            {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <div class="root">
+        <div class="layout-shell{{ if $hasMainMenu }} layout-shell--with-sidebar{{ end }}{{ if $hasToc }} layout-shell--with-toc{{ end }}">
+            {{ if $hasMainMenu }}
+            <aside class="sidebar-card site-sidebar" id="site-sidebar" aria-label="{{ T "nav.ariaLabel" }}">
+                <div class="site-sidebar__title">{{ T "nav.title" }}</div>
+                <div class="site-sidebar__nav">
+                    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+                </div>
+            </aside>
+            <button class="site-sidebar__backdrop" type="button" aria-hidden="true" tabindex="-1"></button>
+            {{ end }}
+
+            <div class="card">
+                <header>
+                    {{ partial "header.html" . }}
+                </header>
+                <main>
+                    {{ block "main" . }}{{ end }}
+                </main>
+                <hr />
+                <footer>
+                    {{ partial "footer.html" . }}
+                </footer>
+            </div>
+
+            {{ block "toc" . }}{{ end }}
+        </div>
+    </div>
+
+    <button class="back-to-top" type="button" aria-label="{{ T "common.backToTop" }}">
+        <span class="material-icons back-to-top__icon" aria-hidden="true">arrow_upward</span>
+        <span class="back-to-top__label">{{ T "common.backToTop" }}</span>
+    </button>
+</body>
+
+</html>
